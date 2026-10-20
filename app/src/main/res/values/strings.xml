@@ -1,31 +1,39 @@
-<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">CampusCohort09</string>
-
     <string name="app_title">Campus Connect</string>
-    <string name="app_subtitles">Resources for international students</string>
+    <string name="app_subtitle">Resource for international students</string>
 
-    <string name="resource_intl_office_name">International Students Office</string>
+    <string name="resources_section_header">Campus Resources</string>
+    <string name="name_categoy_lable">Category %1$s</string>
+
+    <!--    Start of A  block of data-->
+    <string name="resource_intl_office_name">INTERNATIONAL STUDENTS OFFICE</string>
     <string name="resource_intl_office_category">Advising</string>
+    <string name="resource_intl_office_hours">9:00 AM - 5:00 PM</string>
+
 
     <string name="resource_library_name">Main Library</string>
     <string name="resource_library_category">Study Space</string>
+    <string name="resource_library_hours">7:00 AM - 7:00 AM</string>
 
     <string name="resource_veterans_name">Veteran Resource Center</string>
-    <string name="resource_veterans_category">Support Services</string>
+    <string name="resource_veterans_category">Supporting Service</string>
+    <string name="resource_veterans_hours">8AM - 9PM</string>
+    
+    <string name="last_updated_label">Last updated: %1$s</string>
+    <string name="hours_label">Hours: %1$s</string>
 
-    <!-- Placeholders -->
-    <string name="hours_label">Hours: %1$s - %2$s</string>
+    <string name="content_desc_resource_card">%1$s , %2$s , hours %3$s</string>
+
+    <string name="updated_short_label">Updated %1$s</string>
     <string name="fee_label">Fee: %1$s</string>
-    <string name="last_update_label">Last Updated: %1$s</string>
+    <string name="capacity_label">Capacity: %1$s people</string>
 
-    <!-- Plurals -->
-    <plurals name="review_count">
-        <item quantity="one">%1$d review</item>
-        <item quantity="other">%1$d reviews</item>
-    </plurals>
+<plurals name="review_count">
+    <item quantity="one">%d review</item>
+    <item quantity="other">%d reviews</item>
+</plurals>
 
-    <!-- New section -->
-    <string name="section_orientation_title">New Student Orientation</string>
-    <string name="section_orientation_description">Join us every Friday at 10:00 AM in the Student Center to learn about campus services, meet other international students, and get help with enrollment.</string>
+
+
 </resources>

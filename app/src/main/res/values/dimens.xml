@@ -1,0 +1,10 @@
+<resources>
+
+    <dimen name="padding_screen">16dp</dimen>
+    <dimen name="padding_card_inner">12dp</dimen>
+    <dimen name="padding_card_start">30dp</dimen>
+
+    <dimen name="spacing_section">16dp</dimen>
+    <dimen name="spacing_list_header">8dp</dimen>
+    <dimen name="spacing_card_gap">8dp</dimen>
+</resources>

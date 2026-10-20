@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Campus Connect</string>
+    <string name="app_title">‏Campus Connect</string>
+    <string name="app_subtitle">موارد للطلاب الدوليين</string>
+
+    <string name="resources_section_header">موارد الحرم الجامعي</string>
+    <string name="name_categoy_lable">الفئة: %1$s</string>
+
+    <!--    Start of A  block of data-->
+    <string name="resource_intl_office_name">مكتب الطلاب الدوليين</string>
+    <string name="resource_intl_office_category">الإرشاد الأكاديمي</string>
+    <string name="resource_intl_office_hours">9:00 AM - 5:00 PM</string>
+
+    <string name="resource_library_name">المكتبة الرئيسية</string>
+    <string name="resource_library_category">مساحة للدراسة</string>
+    <string name="resource_library_hours">7:00 AM - 11:00 PM</string>
+
+    <string name="resource_veterans_name">مركز موارد المحاربين القدامى</string>
+    <string name="resource_veterans_category">خدمات الدعم</string>
+    <string name="resource_veterans_hours">8:00 AM - 6:00 PM</string>
+
+    <string name="last_updated_label">آخر تحديث: %1$s</string>
+    <string name="hours_label">الساعات: %1$s</string>
+
+    <string name="content_desc_resource_card">%1$s، %2$s، الساعات %3$s</string>
+
+    <string name="updated_short_label">محدّث: %1$s</string>
+    <string name="fee_label">الرسوم: %1$s</string>
+    <string name="capacity_label">السعة: %1$s شخص</string>
+
+    <plurals name="review_count">
+        <item quantity="zero">لا توجد مراجعات</item>
+        <item quantity="one">مراجعة واحدة</item>
+        <item quantity="two">مراجعتان</item>
+        <item quantity="few">%d مراجعات</item>
+        <item quantity="many">%d مراجعة</item>
+        <item quantity="other">%d مراجعة</item>
+    </plurals>
+
+</resources>

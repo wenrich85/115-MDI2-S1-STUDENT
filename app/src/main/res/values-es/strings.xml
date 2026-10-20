@@ -1,31 +1,39 @@
-<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">CampusCohort09</string>
-
     <string name="app_title">Campus Connect</string>
-    <string name="app_subtitles">Recursos para estudiantes internacionales</string>
+    <string name="app_subtitle">Recursos para estudiantes internacionales</string>
 
-    <string name="resource_intl_office_name">Oficina de Estudiantes Internacionales</string>
-    <string name="resource_intl_office_category">Asesoría</string>
+    <string name="resources_section_header">Recursos del Campus</string>
+    <string name="name_categoy_lable">Categoría %1$s</string>
+
+    <!--    Start of A  block of data-->
+    <string name="resource_intl_office_name">OFICINA PARA ESTUDIANTES</string>
+    <string name="resource_intl_office_category">Asesoria</string>
+    <string name="resource_intl_office_hours">9:00 AM - 5:00 PM</string>
+
 
     <string name="resource_library_name">Biblioteca Principal</string>
-    <string name="resource_library_category">Espacio de Estudio</string>
+    <string name="resource_library_category">Espacio de estudio</string>
+    <string name="resource_library_hours">7:00 AM - 7:00 AM</string>
 
-    <string name="resource_veterans_name">Centro de Recursos para Veteranos</string>
-    <string name="resource_veterans_category">Servicios de Apoyo</string>
+    <string name="resource_veterans_name">Centro de recursos para veteranos</string>
+    <string name="resource_veterans_category">Serivicios de apoyo</string>
+    <string name="resource_veterans_hours">8AM - 9PM</string>
 
-    <!-- Marcadores de posición -->
-    <string name="hours_label">Horario: %1$s - %2$s</string>
+    <string name="last_updated_label">Ultima actualizacion: %1$s</string>
+    <string name="hours_label">Horario: %1$s</string>
+
+    <string name="content_desc_resource_card">%1$s , %2$s , horario %3$s</string>
+
+    <string name="updated_short_label">Actualizado %1$s</string>
     <string name="fee_label">Tarifa: %1$s</string>
-    <string name="last_update_label">Última actualización: %1$s</string>
+    <string name="capacity_label">Capacidad: %1$s personas</string>
 
-    <!-- Plurales -->
+
     <plurals name="review_count">
-        <item quantity="one">%1$d reseña</item>
-        <item quantity="other">%1$d reseñas</item>
+        <item quantity="one">%d reseña</item>
+        <item quantity="many">%d reseñas</item>
+        <item quantity="other">%d reseñas</item>
     </plurals>
 
-    <!-- Nueva sección -->
-    <string name="section_orientation_title">Orientación para Nuevos Estudiantes</string>
-    <string name="section_orientation_description">Acompáñanos todos los viernes a las 10:00 AM en el Centro Estudiantil para descubrir los servicios del campus, conocer a otros estudiantes internacionales y recibir ayuda con tu inscripción.</string>
 </resources>

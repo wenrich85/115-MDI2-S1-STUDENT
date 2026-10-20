@@ -1,239 +1,190 @@
 package com.example.campuscohort09
 
 import android.os.Bundle
+
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.activity.enableEdgeToEdge
 import androidx.annotation.StringRes
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Card
-import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalConfiguration
-import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
-import com.example.campuscohort09.ui.theme.CampusCohort09Theme
-import java.text.DateFormat
-import java.text.NumberFormat
-import java.time.LocalDate
+import  androidx.compose.foundation.lazy.items
+
+
+// Import Packages
+import  androidx.compose.ui.platform.LocalContext
+import  java.text.NumberFormat
+import  java.time.LocalDate
 import java.time.format.DateTimeFormatter
 import java.time.format.FormatStyle
-import java.util.Calendar
-import java.util.Currency
-import java.util.Date
 
-// Holds the data for one campus resource
-data class CampusResource(
-    @param:StringRes val nameRes: Int,
-    @param:StringRes val categoryRes: Int,
-    val openHour: Int,          // 24-hour clock, e.g. 9 = 9:00 AM
-    val closeHour: Int,         // e.g. 17 = 5:00 PM
-    val lastUpdated: LocalDate,
+// What is the Locale?
+import  java.util.Locale
+
+data class  CampusResource(
+    @param:StringRes val namesRes: Int,
+    @param:StringRes val category: Int,
+    @param:StringRes val hoursRes: Int,
+    val lastUpdate: LocalDate,
     val reviewCount: Int,
-    val fee: Double? = null     // null means no fee
+    val capacity: Int,
+    val fee: Double
 )
 
-val campusResources = listOf(
+
+val sampleResource = listOf(
     CampusResource(
-        nameRes = R.string.resource_intl_office_name,
-        categoryRes = R.string.resource_intl_office_category,
-        openHour = 9,
-        closeHour = 17,
-        lastUpdated = LocalDate.of(2026, 10, 18),
-        reviewCount = 1
+        namesRes = R.string.resource_intl_office_name,
+        category = R.string.resource_intl_office_category,
+        hoursRes = R.string.resource_intl_office_hours,
+        lastUpdate = LocalDate.of(2026,8,5),
+        reviewCount = 3,
+        capacity = 40,
+        fee = 2.99
     ),
     CampusResource(
-        nameRes = R.string.resource_library_name,
-        categoryRes = R.string.resource_library_category,
-        openHour = 7,
-        closeHour = 19,
-        lastUpdated = LocalDate.of(2026, 10, 15),
-        reviewCount = 24,
-        fee = 0.10
+        namesRes = R.string.resource_library_name,
+        category = R.string.resource_library_category,
+        hoursRes = R.string.resource_library_hours,
+        lastUpdate = LocalDate.of(2026,6,12),
+        reviewCount = 13,
+        capacity = 20,
+        fee = 5.99
     ),
     CampusResource(
-        nameRes = R.string.resource_veterans_name,
-        categoryRes = R.string.resource_veterans_category,
-        openHour = 8,
-        closeHour = 21,
-        lastUpdated = LocalDate.of(2026, 10, 10),
-        reviewCount = 8
+        namesRes = R.string.resource_veterans_name,
+        category = R.string.resource_veterans_category,
+        hoursRes = R.string.resource_veterans_hours,
+        lastUpdate = LocalDate.of(2026,2,1),
+        reviewCount = 1,
+        capacity = 10,
+        fee = 0.99
     )
 )
 
-// Turns an hour (like 17) into a Date so DateFormat can format it
-fun timeOf(hour: Int): Date {
-    val calendar = Calendar.getInstance()
-    calendar.set(Calendar.HOUR_OF_DAY, hour)
-    calendar.set(Calendar.MINUTE, 0)
-    return calendar.time
-}
+class MainActivity: ComponentActivity(){
 
-class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
+
         setContent {
-            CampusCohort09Theme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    CampusConnectScreen(modifier = Modifier.padding(innerPadding))
-                }
+            MaterialTheme{
+                CampusConnectScreen()
             }
         }
     }
 }
-
 @Composable
-fun CampusConnectScreen(modifier: Modifier = Modifier) {
-    LazyColumn(
-        modifier = modifier.fillMaxSize(),
-        contentPadding = PaddingValues(16.dp),
-        verticalArrangement = Arrangement.spacedBy(12.dp)
-    ) {
-        item {
-            Text(
-                text = stringResource(R.string.app_title),
-                style = MaterialTheme.typography.headlineMedium
-            )
-            Text(
-                text = stringResource(R.string.app_subtitles),
-                style = MaterialTheme.typography.bodyLarge
-            )
+fun CampusConnectScreen(){
+    // Spacing values come from res/values/dimens.xml
+    Column(modifier = Modifier.padding(all = dimensionResource(R.dimen.padding_screen))) {
+        Text(stringResource(R.string.app_title), style = MaterialTheme.typography.headlineMedium)
+        Text(stringResource(id = R.string.app_subtitle), style = MaterialTheme.typography.bodyMedium)
+        Spacer(modifier = Modifier.height(dimensionResource(R.dimen.spacing_section)))
+
+        Text(
+            stringResource(R.string.resources_section_header),
+            style=MaterialTheme.typography.titleSmall
+        )
+
+        Spacer(modifier = Modifier.height(dimensionResource(R.dimen.spacing_list_header)))
+
+        LazyColumn {
+            items(sampleResource){ resource ->
+                ResourceCard(resource)
+                Spacer(modifier = Modifier.height(dimensionResource(R.dimen.spacing_card_gap)))
+            }
         }
 
-        items(campusResources) { resource ->
-            ResourceCard(resource)
-        }
 
-        item {
-            InfoSection(
-                titleRes = R.string.section_orientation_title,
-                descriptionRes = R.string.section_orientation_description
-            )
-        }
     }
 }
 
+
+
+//COMPONENT
 @Composable
-fun ResourceCard(resource: CampusResource, modifier: Modifier = Modifier) {
+fun ResourceCard(resource: CampusResource){
+
     val context = LocalContext.current
+    val locale = Locale.getDefault()
 
-    // Detect the user's current locale (updates automatically when the device language changes)
-    val locale = LocalConfiguration.current.locales[0]
+    // DATE FORMAT
+    val dateFullFormatter = DateTimeFormatter.ofLocalizedDate(FormatStyle.FULL).withLocale(locale)
+    val dateShortFormatter = DateTimeFormatter.ofLocalizedDate(FormatStyle.SHORT).withLocale(locale)
 
-    // DATE FORMAT (java.time)
-    val dateFormatter = DateTimeFormatter
-        .ofLocalizedDate(FormatStyle.FULL)
-        .withLocale(locale)
+    // CURRENCY FORMAT
+    val currencyFormatter = NumberFormat.getCurrencyInstance(locale)
+    val integerFormatter = NumberFormat.getIntegerInstance(locale)
 
-    // TIME FORMAT (java.text.DateFormat)
-    val timeFormatter = DateFormat.getTimeInstance(DateFormat.SHORT, locale)
 
-    // CURRENCY FORMAT (java.text.NumberFormat)
-    val currencyFormatter = NumberFormat.getCurrencyInstance(locale).apply {
-        currency = Currency.getInstance("USD") // the fee is charged in U.S. dollars
-    }
-
-    val name = stringResource(resource.nameRes)
-    val category = stringResource(resource.categoryRes)
+    val name = stringResource(resource.namesRes)
+    val  category = stringResource(resource.category)
 
     val hours = stringResource(
         R.string.hours_label,
-        timeFormatter.format(timeOf(resource.openHour)),
-        timeFormatter.format(timeOf(resource.closeHour))
+        stringResource(resource.hoursRes)
     )
 
-    // PLURALS
     val reviewText = context.resources.getQuantityString(
         R.plurals.review_count,
-        resource.reviewCount,   // decides which plural form to use
-        resource.reviewCount    // fills in %1$d
+        resource.reviewCount,
+        resource.reviewCount
     )
 
-    val feeText = resource.fee?.let { fee ->
-        stringResource(R.string.fee_label, currencyFormatter.format(fee))
-    }
+    val capacityFormatted = integerFormatter.format(resource.capacity)
 
-    val lastUpdated = stringResource(
-        R.string.last_update_label,
-        resource.lastUpdated.format(dateFormatter)
-    )
 
-    Card(modifier = modifier.fillMaxWidth()) {
-        Column(modifier = Modifier.padding(12.dp)) {
+    Card(modifier = Modifier.fillMaxWidth()) {
+        Column(modifier = Modifier.padding(dimensionResource(R.dimen.padding_card_inner))) {
+
             Text(
-                text = name,
+               name,
                 style = MaterialTheme.typography.titleMedium
             )
+
             Text(
-                text = category,
+                category,
                 style = MaterialTheme.typography.bodySmall
             )
+
             Text(
-                text = hours,
-                style = MaterialTheme.typography.bodyMedium
+               hours
             )
-            Text(
-                text = reviewText,
-                style = MaterialTheme.typography.bodyMedium
-            )
-            if (feeText != null) {
+
+            Spacer(modifier = Modifier.height(dimensionResource(R.dimen.spacing_list_header)))
+
+
+
+            Text(stringResource(R.string.capacity_label, capacityFormatted))
+
+
+            Text(reviewText)
+
+            if (resource.fee > 0.0){
                 Text(
-                    text = feeText,
-                    style = MaterialTheme.typography.bodyMedium
+                    stringResource(R.string.fee_label ,
+                        currencyFormatter.format(resource.fee))
                 )
             }
-            Text(
-                text = lastUpdated,
-                style = MaterialTheme.typography.bodySmall
-            )
+
+
+            Text(stringResource(R.string.updated_short_label, resource.lastUpdate.format(dateShortFormatter)))
+
+            Text(stringResource(R.string.last_updated_label, resource.lastUpdate.format(dateFullFormatter)))
+
+
         }
     }
-}
 
-@Composable
-fun InfoSection(
-    @StringRes titleRes: Int,
-    @StringRes descriptionRes: Int,
-    modifier: Modifier = Modifier
-) {
-    Card(
-        modifier = modifier.fillMaxWidth(),
-        colors = CardDefaults.cardColors(
-            containerColor = MaterialTheme.colorScheme.primaryContainer
-        )
-    ) {
-        Column(modifier = Modifier.padding(12.dp)) {
-            Text(
-                text = stringResource(titleRes),
-                style = MaterialTheme.typography.titleMedium
-            )
-            Text(
-                text = stringResource(descriptionRes),
-                style = MaterialTheme.typography.bodyMedium,
-                modifier = Modifier.padding(top = 4.dp)
-            )
-        }
-    }
-}
-
-@Preview(showBackground = true)
-@Composable
-fun CampusConnectPreview() {
-    CampusCohort09Theme {
-        CampusConnectScreen()
-    }
 }
