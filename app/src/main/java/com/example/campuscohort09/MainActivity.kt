@@ -23,6 +23,9 @@ import  androidx.compose.foundation.lazy.items
 
 // Import Packages
 import  androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.heading
+import androidx.compose.ui.semantics.semantics
 import  java.text.NumberFormat
 import  java.time.LocalDate
 import java.time.format.DateTimeFormatter
@@ -30,6 +33,8 @@ import java.time.format.FormatStyle
 
 // What is the Locale?
 import  java.util.Locale
+
+
 
 data class  CampusResource(
     @param:StringRes val namesRes: Int,
@@ -94,7 +99,11 @@ fun CampusConnectScreen(){
 
         Text(
             stringResource(R.string.resources_section_header),
-            style=MaterialTheme.typography.titleSmall
+            style=MaterialTheme.typography.titleSmall,
+            modifier = Modifier.semantics{
+                heading()
+                contentDescription = "Resource Header Section"
+            }
         )
 
         Spacer(modifier = Modifier.height(dimensionResource(R.dimen.spacing_list_header)))
