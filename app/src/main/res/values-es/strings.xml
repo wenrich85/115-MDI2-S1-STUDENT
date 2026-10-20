@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">CampusCohort09</string>
+
+    <string name="app_title">Campus Connect</string>
+    <string name="app_subtitles">Recursos para estudiantes internacionales</string>
+
+    <string name="resource_intl_office_name">Oficina de Estudiantes Internacionales</string>
+    <string name="resource_intl_office_category">Asesoría</string>
+
+    <string name="resource_library_name">Biblioteca Principal</string>
+    <string name="resource_library_category">Espacio de Estudio</string>
+
+    <string name="resource_veterans_name">Centro de Recursos para Veteranos</string>
+    <string name="resource_veterans_category">Servicios de Apoyo</string>
+
+    <!-- Marcadores de posición -->
+    <string name="hours_label">Horario: %1$s - %2$s</string>
+    <string name="fee_label">Tarifa: %1$s</string>
+    <string name="last_update_label">Última actualización: %1$s</string>
+
+    <!-- Plurales -->
+    <plurals name="review_count">
+        <item quantity="one">%1$d reseña</item>
+        <item quantity="other">%1$d reseñas</item>
+    </plurals>
+
+    <!-- Nueva sección -->
+    <string name="section_orientation_title">Orientación para Nuevos Estudiantes</string>
+    <string name="section_orientation_description">Acompáñanos todos los viernes a las 10:00 AM en el Centro Estudiantil para descubrir los servicios del campus, conocer a otros estudiantes internacionales y recibir ayuda con tu inscripción.</string>
+</resources>
